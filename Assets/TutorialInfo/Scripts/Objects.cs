@@ -1,3 +1,5 @@
+using TMPro;
+using Unity.AI.Navigation;
 using UnityEngine;
 
 public class Objects : MonoBehaviour
