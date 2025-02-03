@@ -10,7 +10,7 @@ public class Objects : MonoBehaviour
             if (other.tag == "Player")
             {
                 // Count
-                var playerObject = other.GetComponent<PlayerSCript1>();
+                var playerObject = other.GetComponent<PlayerScript1>();
 
             playerObject.AddObject();
 

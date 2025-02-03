@@ -16,16 +16,15 @@ using UnityEngine;
 public class PlayerScript1 : MonoBehaviour
 {
 
-    [Tooltip("Velocidade com que o personagem se move. Não é afetado pela gravidade ou pelo pulo.")]
+    //"Velocidade com que o personagem se move. Não é afetado pela gravidade ou pelo pulo."
     public float velocity = 5f;
-    [Tooltip("Este valor é adicionado à velocidade enquanto o personagem está correndo.")]
-    public float sprintAdittion = 3.5f;
-    [Tooltip("Quanto maior o valor, maior será o pulo do personagem.")]
+    //"Este valor é adicionado à velocidade enquanto o personagem está correndo."
+    public float sprintAdittion = 10f;
+    //"Quanto maior o valor, maior será o pulo do personagem."
     public float jumpForce = 18f;
-    [Tooltip("Tempo que o personagem fica no ar. Quanto maior o valor, mais tempo o personagem flutua antes de cair.")]
+    //"Tempo que o personagem fica no ar. Quanto maior o valor, mais tempo o personagem flutua antes de cair."
     public float jumpTime = 0.85f;
-    [Space]
-    [Tooltip("Força que puxa o jogador para baixo. Alterar este valor afeta todos os movimentos, pulos e quedas.")]
+    //"Força que puxa o jogador para baixo. Alterar este valor afeta todos os movimentos, pulos e quedas."
     public float gravity = 9.8f;
 
     float jumpElapsedTime = 0;
@@ -70,7 +69,7 @@ public class PlayerScript1 : MonoBehaviour
         inputJump = Input.GetAxis("Jump") == 1f;
         inputSprint = Input.GetAxis("Fire3") == 1f;
         // Infelizmente o GetAxis não funciona com GetKeyDown, então as entradas devem ser verificadas individualmente
-        inputCrouch = Input.GetKeyDown(KeyCode.LeftControl) || Input.GetKeyDown(KeyCode.JoystickButton1);
+        inputCrouch = Input.GetKeyDown(KeyCode.LeftControl) || Input.GetKeyDown(KeyCode.RightControl); 
 
         // Verifica se pressionou a tecla de agachar e altera o estado do jogador
         if (inputCrouch)
@@ -86,7 +85,7 @@ public class PlayerScript1 : MonoBehaviour
             animator.SetBool("crouch", isCrouching);
 
             // Correr
-            float minimumSpeed = 0.9f;
+            float minimumSpeed = 5.0f;
             animator.SetBool("run", cc.velocity.magnitude > minimumSpeed);
 
             // Sprint
@@ -121,7 +120,7 @@ public class PlayerScript1 : MonoBehaviour
     {
 
         // Aumento de velocidade ao correr ou desaceleração ao agachar
-        float velocityAdittion = 0;
+        float velocityAdittion = 3f;
         if (isSprinting)
             velocityAdittion = sprintAdittion;
         if (isCrouching)
