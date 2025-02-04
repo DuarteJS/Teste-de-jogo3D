@@ -15,7 +15,7 @@ using UnityEngine;
 /// </summary>
 public class PlayerScript1 : MonoBehaviour
 {
-
+    
     //"Velocidade com que o personagem se move. Não é afetado pela gravidade ou pelo pulo."
     public float velocity = 5f;
     //"Este valor é adicionado à velocidade enquanto o personagem está correndo."
@@ -124,7 +124,7 @@ public class PlayerScript1 : MonoBehaviour
         if (isSprinting)
             velocityAdittion = sprintAdittion;
         if (isCrouching)
-            velocityAdittion = -(velocity * 0.50f); // -50% de velocidade
+            velocityAdittion = -(velocity * 0.60f); // -50% de velocidade
 
         // Movimento de direção
         float directionX = inputHorizontal * (velocity + velocityAdittion) * Time.deltaTime;
